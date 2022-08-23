@@ -1,4 +1,4 @@
-						WGU C195 - SOFTWARE II - ADVANCED JAVA CONCEPT
+	WGU C195 - SOFTWARE II - ADVANCED JAVA CONCEPT
 
 - This is a Java application built with JavaFX, and connect with a MySQL database. It acts as a GUI-based appoinment scheduling desktop appplication. 
 - Author: Loc Nguyen
