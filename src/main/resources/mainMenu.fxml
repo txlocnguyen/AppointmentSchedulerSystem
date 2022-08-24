@@ -1,14 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="MainMenu"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane fx:id="mainTitleLabel" prefHeight="605.0" prefWidth="938.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainMenu">
+   <children>
+      <Label layoutX="276.0" layoutY="14.0" text="APPOINMENT SCHEDULER SYSTEM">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font></Label>
+      <Label fx:id="apptLabel" layoutX="31.0" layoutY="61.0" text="Appoinments">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TableView fx:id="apptTableView" layoutX="14.0" layoutY="97.0" prefHeight="174.0" prefWidth="913.0">
+        <columns>
+          <TableColumn fx:id="apptTableApptID" prefWidth="65.0" text="Appt ID" />
+          <TableColumn fx:id="apptTableTitle" prefWidth="127.0" text="Title" />
+            <TableColumn fx:id="apptTableDescription" prefWidth="151.0" text="Description" />
+            <TableColumn fx:id="apptTableLocation" prefWidth="104.0" text="Location" />
+            <TableColumn fx:id="apptTableType" prefWidth="73.0" text="Type" />
+            <TableColumn fx:id="apptTableStartDate" prefWidth="86.0" text="Start Date" />
+            <TableColumn fx:id="apptTableEndDate" prefWidth="116.0" text="End Date" />
+            <TableColumn fx:id="apptTableCustomerID" prefWidth="77.0" text="Customer ID" />
+            <TableColumn fx:id="apptTableUserID" prefWidth="49.0" text="User ID" />
+            <TableColumn fx:id="apptTableContactID" prefWidth="64.0" text="Contact ID" />
+        </columns>
+      </TableView>
+      <TableView fx:id="customerTableView" layoutX="14.0" layoutY="328.0" prefHeight="174.0" prefWidth="913.0">
+         <columns>
+            <TableColumn fx:id="customerTableID" prefWidth="77.0" text="Customer ID" />
+            <TableColumn fx:id="customerTableName" prefWidth="217.0" text="Name" />
+            <TableColumn fx:id="customerTableAddress" prefWidth="280.0" text="Address" />
+            <TableColumn fx:id="customerTablePostalCode" prefWidth="96.0" text="Postal Code" />
+            <TableColumn fx:id="customerTablePhoneNo" prefWidth="115.0" text="Phone No" />
+            <TableColumn fx:id="customerTableDivisionID" prefWidth="127.0" text="Division ID" />
+         </columns>
+      </TableView>
+      <Label fx:id="customerLabel" layoutX="31.0" layoutY="289.0" text="Customers">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <RadioButton fx:id="radioBttnAll" layoutX="855.0" layoutY="66.0" mnemonicParsing="false" selected="true" text="View All">
+         <toggleGroup>
+            <ToggleGroup fx:id="viewApptGroup" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="radioBttnMonth" layoutX="625.0" layoutY="66.0" mnemonicParsing="false" text="View By Month" toggleGroup="$viewApptGroup" />
+      <RadioButton fx:id="radioBttnWeek" layoutX="744.0" layoutY="66.0" mnemonicParsing="false" text="View By Week" toggleGroup="$viewApptGroup" />
+      <ComboBox fx:id="monthComboBox" layoutX="469.0" layoutY="62.0" prefWidth="150.0" visible="false" />
+      <Button fx:id="logOutBttn" layoutX="806.0" layoutY="556.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="118.0" text="LOGOUT">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="reportsBttn" layoutX="14.0" layoutY="556.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="102.0" text="REPORTS">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="deleteApptBttn" layoutX="806.0" layoutY="277.0" mnemonicParsing="false" text="Delete Appoinment" />
+      <Button fx:id="modApptBttn" layoutX="676.0" layoutY="277.0" mnemonicParsing="false" text="Modify Appoinment" />
+      <Button fx:id="addApptBttn" layoutX="558.0" layoutY="277.0" mnemonicParsing="false" text="Add Appoinment" />
+      <Button fx:id="addCustomerBttn" layoutX="593.0" layoutY="509.0" mnemonicParsing="false" text="Add Customer" />
+      <Button fx:id="modCustomerBttn" layoutX="698.0" layoutY="509.0" mnemonicParsing="false" text="Modify Customer" />
+      <Button fx:id="deleteCustomerBttn" layoutX="814.0" layoutY="509.0" mnemonicParsing="false" text="Delete Customer" />
+   </children>
 </AnchorPane>
