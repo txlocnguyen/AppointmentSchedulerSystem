@@ -16,7 +16,7 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="apptIDTxtField" disable="true" editable="false" layoutX="136.0" layoutY="62.0" prefHeight="29.0" prefWidth="156.0" text="Auto Generated - Disabled">
+      <TextField fx:id="apptIDTxtField" disable="true" editable="false" layoutX="136.0" layoutY="62.0" prefHeight="29.0" prefWidth="156.0" promptText="Auto Generated - Disabled">
          <font>
             <Font name="System Italic" size="12.0" />
          </font>
@@ -26,32 +26,32 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="titleTxtField" layoutX="140.0" layoutY="104.0" />
+      <TextField fx:id="titleTxtField" layoutX="140.0" layoutY="104.0" promptText="Enter Title" />
       <Label fx:id="descriptionLabel" layoutX="14.0" layoutY="142.0" prefHeight="39.0" prefWidth="122.0" text="Description:">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="descTxtField" layoutX="140.0" layoutY="149.0" />
+      <TextField fx:id="descTxtField" layoutX="140.0" layoutY="149.0" promptText="Enter Description" />
       <Label fx:id="locationLabel" layoutX="14.0" layoutY="194.0" prefHeight="39.0" prefWidth="122.0" text="Location:">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <ComboBox fx:id="locationComboBox" layoutX="139.0" layoutY="201.0" prefWidth="150.0" />
-      <ComboBox fx:id="divisionComboBox" layoutX="307.0" layoutY="201.0" prefWidth="150.0" />
+      <ComboBox fx:id="locationComboBox" layoutX="139.0" layoutY="201.0" prefWidth="150.0" promptText="Select Country" />
+      <ComboBox fx:id="divisionComboBox" layoutX="307.0" layoutY="201.0" prefWidth="150.0" promptText="Select Divison" />
       <Label fx:id="contactLabel" layoutX="14.0" layoutY="377.0" prefHeight="39.0" prefWidth="122.0" text="Contact:">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <ComboBox fx:id="contactComboBox" layoutX="140.0" layoutY="384.0" prefWidth="150.0" />
+      <ComboBox fx:id="contactComboBox" layoutX="140.0" layoutY="384.0" prefWidth="150.0" promptText="Select Contact" />
       <Label fx:id="typeLabel" layoutX="14.0" layoutY="241.0" prefHeight="39.0" prefWidth="122.0" text="Type:">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <ComboBox fx:id="typeComboBox" layoutX="140.0" layoutY="248.0" prefWidth="150.0" />
+      <ComboBox fx:id="typeComboBox" layoutX="140.0" layoutY="248.0" prefWidth="150.0" promptText="Select Type" />
       <Label fx:id="customerIDLabel" layoutX="14.0" layoutY="292.0" prefHeight="39.0" prefWidth="122.0" text="Customer ID:">
          <font>
             <Font size="16.0" />
@@ -92,12 +92,12 @@
       </Label>
       <ComboBox fx:id="apptEndTimeHourComboBox" layoutX="558.0" layoutY="384.0" prefHeight="25.0" prefWidth="111.0" promptText="Hour" />
       <ComboBox fx:id="apptEndTimeMinuteComboBox" layoutX="680.0" layoutY="384.0" prefHeight="25.0" prefWidth="111.0" promptText="Minute" />
-      <Button fx:id="saveBttn" layoutX="348.0" layoutY="427.0" mnemonicParsing="false" text="Save">
+      <Button fx:id="saveBttn" layoutX="348.0" layoutY="427.0" mnemonicParsing="false" text="SAVE">
          <font>
             <Font size="15.0" />
          </font>
       </Button>
-      <Button fx:id="cancelBttn" layoutX="413.0" layoutY="427.0" mnemonicParsing="false" text="Cancel">
+      <Button fx:id="cancelBttn" layoutX="413.0" layoutY="427.0" mnemonicParsing="false" text="CANCEL">
          <font>
             <Font size="15.0" />
          </font>
