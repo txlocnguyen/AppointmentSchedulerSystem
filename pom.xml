@@ -61,7 +61,7 @@
                         <id>default-cli</id>
                         <configuration>
                             <mainClass>
-                                com.locnguyen.appoinmentschedulerlocnguyen/com.locnguyen.appoinmentschedulerlocnguyen.HelloApplication
+                                com.locnguyen.appoinmentschedulerlocnguyen/com.locnguyen.appointmentschedulerlocnguyen.HelloApplication
                             </mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>

@@ -1,4 +1,4 @@
-package com.locnguyen.appoinmentschedulerlocnguyen.helper;
+package com.locnguyen.appointmentschedulerlocnguyen.helper;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

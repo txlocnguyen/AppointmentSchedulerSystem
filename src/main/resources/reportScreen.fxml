@@ -6,7 +6,7 @@
 
 <AnchorPane prefHeight="790.0" prefWidth="941.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ReportScreen">
    <children>
-      <Label fx:id="apptByTypeLabel" layoutX="379.0" layoutY="13.0" text="Appoinments By Type">
+      <Label fx:id="apptByTypeLabel" layoutX="379.0" layoutY="13.0" text="Appointments By Type">
          <font>
             <Font size="18.0" />
          </font>
@@ -37,7 +37,7 @@
             <TableColumn fx:id="apptByTypeContactID" prefWidth="74.0" text="Contact ID" />
         </columns>
       </TableView>
-      <Label fx:id="apptByMonthLabel" layoutX="381.0" layoutY="179.0" text="Appoinments By Month">
+      <Label fx:id="apptByMonthLabel" layoutX="381.0" layoutY="179.0" text="Appointments By Month">
          <font>
             <Font size="18.0" />
          </font>
@@ -63,7 +63,7 @@
          </font>
       </Label>
       <Label fx:id="apptByMonthTotal" layoutX="875.0" layoutY="184.0" prefHeight="17.0" prefWidth="43.0" />
-      <Label fx:id="apptByContactLabel" layoutX="377.0" layoutY="368.0" text="Appoinments By Contact">
+      <Label fx:id="apptByContactLabel" layoutX="377.0" layoutY="368.0" text="Appointments By Contact">
          <font>
             <Font size="18.0" />
          </font>
@@ -89,7 +89,7 @@
             <TableColumn fx:id="apptByContactContactID" prefWidth="91.0" text="Contact ID" />
          </columns>
       </TableView>
-      <Label fx:id="apptByCustomerLabel" layoutX="366.0" layoutY="543.0" text="Appoinments By Customer">
+      <Label fx:id="apptByCustomerLabel" layoutX="366.0" layoutY="543.0" text="Appointments By Customer">
          <font>
             <Font size="18.0" />
          </font>
