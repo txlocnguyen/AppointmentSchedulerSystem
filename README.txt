@@ -1,6 +1,6 @@
 	WGU C195 - SOFTWARE II - ADVANCED JAVA CONCEPT
 
-- This is a Java application built with JavaFX, and it is connected to a local MySQL database. It acts as a GUI-based appoinment scheduling desktop appplication. 
+- This is a Java application built with JavaFX, and it is connected to a local MySQL database. It acts as a GUI-based appointment scheduling desktop appplication. 
 - Author: Loc Nguyen
 - Contact information: lngu242@wgu.edu
 - Application version: 1.0.0
@@ -10,4 +10,4 @@
 - JavaFX SDK version 17.0.1
 - MySQL Connector Java version 8.0.25
 - The program should be able to run fine out of the box. The application entry point is Main.java
-- Additional report chosen: A report of appoinments by Customer. In that way, we can view all the upcoming appoinments of a particular customer
+- Additional report chosen: A report of appointments by Customer. In that way, we can view all the upcoming appointments of a particular customer
