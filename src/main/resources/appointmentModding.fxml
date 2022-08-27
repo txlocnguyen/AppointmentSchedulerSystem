@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="466.0" prefWidth="798.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AppoinmentAdding">
+<AnchorPane prefHeight="466.0" prefWidth="798.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.locnguyen.appointmentschedulerlocnguyen.controller.appointmentModdingController">
    <children>
       <Label fx:id="editApptMainLabel" layoutX="316.0" layoutY="14.0" prefHeight="29.0" prefWidth="211.0" text="Edit This Appointment">
          <font>

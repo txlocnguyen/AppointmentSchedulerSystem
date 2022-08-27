@@ -9,7 +9,7 @@ import java.time.ZonedDateTime;
 public class loginTracking {
     private static final String loginTrackingFile = "login_activity.txt";
     //track login attempts and log them to a file in the root folder of the project
-    public static void loginTracking(boolean matchingUsrAndPw, String usrName){
+    public static void logLoginActivity(boolean matchingUsrAndPw, String usrName){
         try{
             BufferedWriter writer = new BufferedWriter(new FileWriter(loginTrackingFile, true));
             String logLine;

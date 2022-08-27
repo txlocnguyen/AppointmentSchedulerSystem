@@ -17,7 +17,9 @@ public class usersDAO {
     //handle login into the system using the combo of username and password
     public static boolean handleLogin(String usr, String pw){
         try{
-            PreparedStatement sqlStatement = JDBC.connection.prepareStatement("SELECT * FROM users WHERE User_Name='" + usr + "' AND Password='" + pw + "'");
+            PreparedStatement sqlStatement = JDBC.connection.prepareStatement("SELECT * FROM users WHERE User_Name=? AND Password=?");
+            sqlStatement.setString(1, usr);
+            sqlStatement.setString(2, pw);
             ResultSet resultSet = sqlStatement.executeQuery();
             if(!resultSet.next()){
                 return false;
@@ -31,7 +33,7 @@ public class usersDAO {
         } catch (Exception error) {
             error.printStackTrace();
         }
-        return false;
+        return true;
     }
 
     public static users getUserCurrentlyInSession(){
