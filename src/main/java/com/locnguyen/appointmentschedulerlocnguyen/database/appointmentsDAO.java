@@ -22,7 +22,7 @@ public class appointmentsDAO {
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         LocalDateTime currentTime = LocalDateTime.now(ZoneOffset.UTC);
         LocalDateTime futureTimeAfter15Minutes = currentTime.plusMinutes(15);
-        int currentUserID = usersDAO.getCurrentUser().getUserID();
+        int currentUserID = usersDAO.getUserCurrentlyInSession().getUserId();
 
         try {
             PreparedStatement sqlStatement = JDBC.connection.prepareStatement("SELECT * FROM APPOINTMENTS WHERE Start >= ? AND Start <= ? AND User_ID = ?;");
@@ -54,8 +54,8 @@ public class appointmentsDAO {
     public static ObservableList<appointment> getAppointmentsByWeek() {
         ObservableList<appointment> appointments = FXCollections.observableArrayList();
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        String currentTime = ZonedDateTime.now(usersDAO.getTimeZone()).withZoneSameInstant(ZoneOffset.UTC).format(dateTimeFormatter);
-        String futureTimeIn1Week = ZonedDateTime.now(usersDAO.getTimeZone()).plusWeeks(1).withZoneSameInstant(ZoneOffset.UTC).format(dateTimeFormatter);
+        String currentTime = ZonedDateTime.now(usersDAO.getUserCurrentTimeZone()).withZoneSameInstant(ZoneOffset.UTC).format(dateTimeFormatter);
+        String futureTimeIn1Week = ZonedDateTime.now(usersDAO.getUserCurrentTimeZone()).plusWeeks(1).withZoneSameInstant(ZoneOffset.UTC).format(dateTimeFormatter);
         try {
             PreparedStatement sqlStatement = JDBC.connection.prepareStatement("SELECT * FROM APPOINTMENTS AS appt LEFT JOIN CUSTOMERS AS cust ON appt.Customer_ID = cust.Customer_ID WHERE Start >= ? AND Start <= ?;");
             sqlStatement.setString(1, currentTime);
