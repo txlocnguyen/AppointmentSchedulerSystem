@@ -144,7 +144,7 @@ public class appointmentsDAO {
         return appointments;
     }
 
-    //delete every appointments from local database that is connected to a particular customer
+    //delete every appointment from local database that is connected to a particular customer
     public static void deleteAppointmentsByCustomerID(int apptCustomerID) {
         try {
             PreparedStatement sqlStatement = JDBC.connection.prepareStatement("DELETE FROM APPOINTMENTS WHERE Customer_ID = ?;");
@@ -257,7 +257,7 @@ public class appointmentsDAO {
     public static ObservableList<appointment> getAppointmentsByMonth(String month) {
         ObservableList<appointment> appointments = FXCollections.observableArrayList();
         try {
-            PreparedStatement sqlStatement = JDBC.connection.prepareStatement("SELECT * FROM APPOINTMENTS WHERE MONTH(Start) = ?;");
+            PreparedStatement sqlStatement = JDBC.connection.prepareStatement("SELECT * FROM APPOINTMENTS WHERE MONTHNAME(Start) = ?;");
             sqlStatement.setString(1, month);
             ResultSet resultSet = sqlStatement.executeQuery();
             while (resultSet.next()) {
