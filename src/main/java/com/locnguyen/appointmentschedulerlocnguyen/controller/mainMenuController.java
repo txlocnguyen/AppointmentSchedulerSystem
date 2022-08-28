@@ -333,7 +333,7 @@ public class mainMenuController implements Initializable {
             FXMLLoader loader = new FXMLLoader(Main.class.getResource("/customerModding.fxml"));
             Parent root = loader.load();
             customerModdingController customerModdingController = loader.getController();
-            //customerModdingController.setCustomer(cust);
+            customerModdingController.fillForm(cust);
             stage.setScene(new Scene(root));
             stage.show();
         } else {

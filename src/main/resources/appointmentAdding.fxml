@@ -38,8 +38,6 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <ComboBox fx:id="locationComboBox" layoutX="139.0" layoutY="201.0" prefWidth="150.0" promptText="Select Country" />
-      <ComboBox fx:id="divisionComboBox" layoutX="307.0" layoutY="201.0" prefWidth="150.0" promptText="Select Divison" />
       <Label fx:id="contactLabel" layoutX="14.0" layoutY="377.0" prefHeight="39.0" prefWidth="122.0" text="Contact:">
          <font>
             <Font size="16.0" />
@@ -102,5 +100,6 @@
          </font>
       </Button>
       <TextField fx:id="typeTxtField" layoutX="136.0" layoutY="248.0" promptText="Enter Type" />
+      <TextField fx:id="locationTxtField" layoutX="140.0" layoutY="201.0" promptText="Enter Location" />
    </children>
 </AnchorPane>

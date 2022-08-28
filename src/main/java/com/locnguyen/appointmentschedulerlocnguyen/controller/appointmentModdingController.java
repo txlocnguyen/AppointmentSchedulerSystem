@@ -55,16 +55,10 @@ public class appointmentModdingController {
     private Label descriptionLabel;
 
     @FXML
-    private ComboBox<?> divisionComboBox;
-
-    @FXML
     private Label editApptMainLabel;
 
     @FXML
     private Label endTimeLabel;
-
-    @FXML
-    private ComboBox<?> locationComboBox;
 
     @FXML
     private Label locationLabel;
@@ -80,6 +74,9 @@ public class appointmentModdingController {
 
     @FXML
     private TextField titleTxtField;
+
+    @FXML
+    private TextField locationTxtField;
 
     @FXML
     private TextField typeTxtField;

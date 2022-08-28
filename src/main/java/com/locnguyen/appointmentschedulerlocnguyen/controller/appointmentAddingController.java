@@ -58,13 +58,10 @@ public class appointmentAddingController {
     private Label descriptionLabel;
 
     @FXML
-    private ComboBox<?> divisionComboBox;
-
-    @FXML
     private Label endTimeLabel;
 
     @FXML
-    private ComboBox<?> locationComboBox;
+    private TextField locationTxtField;
 
     @FXML
     private Label locationLabel;
