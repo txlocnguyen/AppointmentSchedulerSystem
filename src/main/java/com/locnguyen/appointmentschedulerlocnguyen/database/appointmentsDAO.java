@@ -144,6 +144,22 @@ public class appointmentsDAO {
         return appointments;
     }
 
+    //lookup a list of all types of appointments in the local database
+    public static ObservableList<String> getAllAppointmentTypes() {
+        ObservableList<String> allTypes = FXCollections.observableArrayList();
+        try {
+            PreparedStatement sqlStatement = JDBC.connection.prepareStatement("SELECT Type FROM APPOINTMENTS;");
+            ResultSet resultSet = sqlStatement.executeQuery();
+            while (resultSet.next()) {
+                String type = resultSet.getString("Type");
+                allTypes.add(type);
+            }
+        } catch (Exception error) {
+            error.printStackTrace();
+        }
+        return allTypes;
+    }
+
     //delete every appointment from local database that is connected to a particular customer
     public static void deleteAppointmentsByCustomerID(int apptCustomerID) {
         try {

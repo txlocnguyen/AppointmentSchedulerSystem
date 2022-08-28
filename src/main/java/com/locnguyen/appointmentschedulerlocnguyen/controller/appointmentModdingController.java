@@ -82,7 +82,7 @@ public class appointmentModdingController {
     private TextField titleTxtField;
 
     @FXML
-    private ComboBox<?> typeComboBox;
+    private TextField typeTxtField;
 
     @FXML
     private Label typeLabel;
