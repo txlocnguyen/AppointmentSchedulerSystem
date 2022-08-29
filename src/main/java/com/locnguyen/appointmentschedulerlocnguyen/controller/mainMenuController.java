@@ -194,7 +194,7 @@ public class mainMenuController implements Initializable {
             FXMLLoader loader = new FXMLLoader(Main.class.getResource("/appointmentModding.fxml"));
             Parent root = loader.load();
             appointmentModdingController appointmentModdingController = loader.getController();
-            //appointmentModdingController.setAppointment(appt);
+            appointmentModdingController.fillForm(appt);
             stage.setScene(new Scene(root));
             stage.show();
         } else {
@@ -214,7 +214,7 @@ public class mainMenuController implements Initializable {
             FXMLLoader loader = new FXMLLoader(Main.class.getResource("/appointmentAdding.fxml"));
             Parent root = loader.load();
             appointmentAddingController appointmentAddingController = loader.getController();
-            //appointmentAddingController.setCustomer(cust);
+            appointmentAddingController.fillForm(cust);
             stage.setScene(new Scene(root));
             stage.show();
         } else {

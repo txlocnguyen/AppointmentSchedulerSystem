@@ -89,12 +89,12 @@
       </Label>
       <ComboBox fx:id="apptEndTimeHourComboBox" layoutX="558.0" layoutY="384.0" prefHeight="25.0" prefWidth="111.0" promptText="Hour" />
       <ComboBox fx:id="apptEndTimeMinuteComboBox" layoutX="680.0" layoutY="384.0" prefHeight="25.0" prefWidth="111.0" promptText="Minute" />
-      <Button fx:id="saveBttn" layoutX="348.0" layoutY="427.0" mnemonicParsing="false" text="SAVE">
+      <Button fx:id="saveBttn" layoutX="348.0" layoutY="427.0" mnemonicParsing="false" onAction="#saveClicked" text="SAVE">
          <font>
             <Font size="15.0" />
          </font>
       </Button>
-      <Button fx:id="cancelBttn" layoutX="413.0" layoutY="427.0" mnemonicParsing="false" text="CANCEL">
+      <Button fx:id="cancelBttn" layoutX="413.0" layoutY="427.0" mnemonicParsing="false" onAction="#cancelClicked" text="CANCEL">
          <font>
             <Font size="15.0" />
          </font>

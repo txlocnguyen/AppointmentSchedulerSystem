@@ -115,7 +115,7 @@ public class appointmentsDAO {
         sqlStatement.setTimestamp(4, Timestamp.valueOf(end));
         sqlStatement.setTimestamp(5, Timestamp.valueOf(start));
         ResultSet resultSet = sqlStatement.executeQuery();
-        return !resultSet.next();
+        return resultSet.next();
     }
 
     //look for all appointments in the local database using a particular type
