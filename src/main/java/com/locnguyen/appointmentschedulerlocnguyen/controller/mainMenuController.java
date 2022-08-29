@@ -263,20 +263,23 @@ public class mainMenuController implements Initializable {
             alert.setTitle(resourceBundle.getString("apptDelConfirm"));
             alert.setHeaderText(resourceBundle.getString("apptDelConfirm"));
             alert.setContentText(resourceBundle.getString("apptDelMsg") + appt.getApptID());
-            Optional<ButtonType> result = alert.showAndWait();
-            if(result.get() == ButtonType.OK){
-                appointmentsDAO.deleteAppointmentByID(appt.getApptID());
-                FXMLLoader loader = new FXMLLoader(Main.class.getResource("/mainMenu.fxml"));
-                Scene scene = null;
-                try {
-                    scene = new Scene(loader.load());
-                } catch (IOException error) {
-                    error.printStackTrace();
-                }
-                Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-                stage.setScene(scene);
-                stage.show();
-            }
+            alert.showAndWait().ifPresent(buttonType -> {
+              if(buttonType == ButtonType.OK){
+                  appointmentsDAO.deleteAppointmentByID(appt.getApptID());
+                  FXMLLoader loader = new FXMLLoader(Main.class.getResource("/mainMenu.fxml"));
+                  Scene scene = null;
+                  try {
+                      scene = new Scene(loader.load());
+                  } catch (IOException error) {
+                      error.printStackTrace();
+                  }
+                  Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+                  stage.setScene(scene);
+                  stage.show();
+              } else if(buttonType == ButtonType.CANCEL){
+                  alert.close();
+              }
+          });
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle(resourceBundle.getString("noApptSelected"));
