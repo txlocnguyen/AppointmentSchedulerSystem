@@ -8,7 +8,10 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-
+/***
+ * Main class. This class is the entry point for the application and set the program execution start point.
+ * @author Loc Nguyen
+ */
 public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {

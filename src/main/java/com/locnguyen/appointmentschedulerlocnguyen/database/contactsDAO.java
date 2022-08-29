@@ -7,9 +7,16 @@ import javafx.collections.ObservableList;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+/***
+ * Public class contactsDAO
+ * @author Loc Nguyen
+ */
 public class contactsDAO {
-    //lookup contact ID in the local database using a particular contact name
+    /***
+     * Lookup contact ID in the local database using a particular contact name
+     * @param cntName
+     * @return contact ID
+     */
     public static int getCntIDByCntName(String cntName) {
         int cntID = 0;
         try {
@@ -24,8 +31,11 @@ public class contactsDAO {
         }
         return cntID;
     }
-
-    //lookup contact name in the local database using a particular contact ID
+    /***
+     * Lookup contact name in the local database using a particular contact ID
+     * @param cntID
+     * @return contact name
+     */
     public static String getCntNameByCntID(int cntID) {
         String cntName = "";
         try {
@@ -40,8 +50,10 @@ public class contactsDAO {
         }
         return cntName;
     }
-
-    //lookup a list of all contact names currently in the local database
+    /***
+     * Lookup a list of all contact names currently in the local database
+     * @return list of contact names
+     */
     public static ObservableList<String> getAllCntsName() {
         ObservableList<String> allContacts = FXCollections.observableArrayList();
         try {

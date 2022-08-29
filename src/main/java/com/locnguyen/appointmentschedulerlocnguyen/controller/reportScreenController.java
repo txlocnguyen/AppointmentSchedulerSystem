@@ -20,7 +20,10 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
-
+/***
+ * Public controller class for reportScnreenController
+ * @author Loc Nguyen
+ */
 public class reportScreenController implements Initializable {
 
     @FXML
@@ -208,7 +211,11 @@ public class reportScreenController implements Initializable {
     ObservableList<appointment> apptByMonthList;
     ObservableList<appointment> apptByTypeList;
 
-    // Initialize the report screen and fill all 4 tables with data from local database
+    /***
+     * Initialize the report screen and fill all 4 tables with data from local database
+     * @param u
+     * @param rb
+     */
     @Override
     public void initialize(URL u, ResourceBundle rb){
         apptByTypeApptID.setCellValueFactory(new PropertyValueFactory<>("apptID"));
@@ -268,8 +275,11 @@ public class reportScreenController implements Initializable {
         apptByContactTotal.setText(String.valueOf(apptByContactList.size()));
         apptByCustomerTotal.setText(String.valueOf(apptByCustomerList.size()));
     }
-
-    //handle button click to go back to the main screen
+    /***
+     * Handle button click to go back to the main screen
+     * @param e
+     * @throws IOException
+     */
     @FXML
     public void handleBackButton(ActionEvent e) throws IOException {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -290,29 +300,33 @@ public class reportScreenController implements Initializable {
             stage.show();;
         }
     }
-
-    //group appointment by type when user select an option from the type drop-down list
+    /***
+     * Group appointment by type when user select an option from the type drop-down list
+     */
     public void groupApptByType(){
         apptByTypeList = appointmentsDAO.getAppointmentsByType(apptByTypeComboBox.getSelectionModel().getSelectedItem());
         apptByTypeTable.setItems(apptByTypeList);
         apptByTypeTotal.setText(String.valueOf(apptByTypeList.size()));
     }
-
-    //group appointment by month when user select an option from the month drop-down list
+    /***
+     * Group appointment by month when user select an option from the month drop-down list
+     */
     public void groupApptByMonth(){
         apptByMonthList = appointmentsDAO.getAppointmentsByMonth(apptByMonthComboBox.getSelectionModel().getSelectedItem());
         apptByMonthTable.setItems(apptByMonthList);
         apptByMonthTotal.setText(String.valueOf(apptByMonthList.size()));
     }
-
-    //group appointment by contact when user select an option from the contact drop-down list
+    /***
+     * Group appointment by contact when user select an option from the contact drop-down list
+     */
     public void groupApptByContact(){
         apptByContactList = appointmentsDAO.getAppointmentsByContactID(contactsDAO.getCntIDByCntName(apptByContactComboBox.getSelectionModel().getSelectedItem()));
         apptByContactTable.setItems(apptByContactList);
         apptByContactTotal.setText(String.valueOf(apptByContactList.size()));
     }
-
-    //group appointment by customer when user select an option from the customer drop-down list
+    /***
+     * Group appointment by customer when user select an option from the customer drop-down list
+     */
     public void groupApptByCustomer(){
         apptByCustomerList = appointmentsDAO.getAppointmentsByCustomerID(customersDAO.getCustomerIDByCustomerName(apptByCustomerComboBox.getSelectionModel().getSelectedItem()));
         apptByCustomerTable.setItems(apptByCustomerList);

@@ -21,7 +21,10 @@ import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 import java.util.ResourceBundle;
-
+/***
+ * Public controller class appointmentAddingController
+ * @author Loc Nguyen
+ */
 public class appointmentAddingController implements Initializable {
 
     @FXML
@@ -104,8 +107,12 @@ public class appointmentAddingController implements Initializable {
 
     @FXML
     private TextField userIDTxtField;
-
-    //initialize method and fill out the combo boxes with the appropriate values. Prevent date picker from selecting past dates and weekends.
+    /***
+     * Initilize method and fill out the combo boxes with the appropriate values. Prevent date picker from selecting past dates and weekends.
+     * @param u
+     * @param rb
+     * Lambda expression is used to prevent the user using the date picker to select past dates and weekends.
+     */
     @Override
     public void initialize(URL u, ResourceBundle rb){
         apptDatePicker.setDayCellFactory(datePicker -> new DateCell() {
@@ -122,13 +129,17 @@ public class appointmentAddingController implements Initializable {
         userIDTxtField.setText(String.valueOf(usersDAO.getUserCurrentlyInSession().getUserId()));
         contactComboBox.setItems(contactsDAO.getAllCntsName());
     }
-
-    //fill out the form with customer ID information that the user selected when choosing to add appointment
+    /***
+     * Fill out the form with customer ID information that the user selected when choosing to add appointment
+     * @param cust
+     */
     public void fillForm(customers cust){
         customerIDTxtField.setText(String.valueOf(cust.getCustomerID()));
     }
-
-    //handle button click for the cancel button and return to main menu
+    /***
+     * Handle button click for the cancel button and return to main menu
+     * @param e
+     */
     public void cancelClicked(ActionEvent e) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Cancel Adding Appointment");
@@ -148,15 +159,24 @@ public class appointmentAddingController implements Initializable {
             }
         }
     }
-
-    //handle checking for overlap appointments when scheduling a new appointment
-    //return true if there is an overlap, return false if there's no overlap.
+    /***
+     * Handle checking for overlap appointments when scheduling a new appointment
+     * @param start
+     * @param end
+     * @param apptID
+     * @throws SQLException
+     * @return true if there is an overlap, return false if there's no overlap
+     */
     public Boolean checkForOverlapAppts(LocalDateTime start, LocalDateTime end, int apptID) throws SQLException {
         return appointmentsDAO.checkForConflict(apptID, start, end);
     }
-
-    //handle checking for out of business hours when scheduling a new appointment
-    //return true if the appointment is out of business hours, return false if it's not.
+    /***
+     * Handle checking for out of business hours when scheduling a new appointment
+     * @param start
+     * @param end
+     * @param apptDate
+     * @return true if the appointment is out of business hours, return false if it's not.
+     */
     public Boolean checkForOOBHAppts(LocalDateTime start, LocalDateTime end, LocalDate apptDate) {
         ZonedDateTime apptStartTimeConverted = ZonedDateTime.of(start, usersDAO.getUserCurrentTimeZone());
         ZonedDateTime apptEndTimeConverted = ZonedDateTime.of(end, usersDAO.getUserCurrentTimeZone());
@@ -164,8 +184,11 @@ public class appointmentAddingController implements Initializable {
         ZonedDateTime officeHoursEnd = ZonedDateTime.of(apptDate, LocalTime.of(22,0),ZoneId.of("America/New_York"));
         return (apptStartTimeConverted.isBefore(officeHoursStart) || apptEndTimeConverted.isAfter(officeHoursEnd) || apptStartTimeConverted.isAfter(officeHoursEnd) || apptEndTimeConverted.isBefore(officeHoursStart) || apptEndTimeConverted.isBefore(apptStartTimeConverted));
     }
-
-    //handle button clicking for the save button and add the appointment to the database
+    /***
+     * Handle button click for the save button and add the appointment to the database
+     * @param e
+     * @throws SQLException
+     */
     public void saveClicked(ActionEvent e) throws SQLException {
         try{
             int apptID = appointmentsDAO.newAppointmentID();

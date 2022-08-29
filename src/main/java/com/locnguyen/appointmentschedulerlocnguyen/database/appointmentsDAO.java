@@ -14,9 +14,15 @@ import java.time.ZoneId;
 import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
-
+/***
+ * Public class appointmentsDAO
+ * @author Loc Nguyen
+ */
 public class appointmentsDAO {
-    //lookup for any appointments in the local database that are coming up in the next 15 minutes UTC time
+    /***
+     * Lookup for any appointments in the local database that are coming up in the next 15 minutes UTC time
+     * @return appointments
+     */
     public static ObservableList<appointment> upComingAppointment15Minutes() {
         ObservableList<appointment> appointments = FXCollections.observableArrayList();
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
@@ -49,8 +55,10 @@ public class appointmentsDAO {
         }
         return appointments;
     }
-
-    //look for all appointments in the local database within 1 week from now
+    /***
+     * Look for all appointments in the local database within 1 week from now
+     * @return appointments
+     */
     public static ObservableList<appointment> getAppointmentsByWeek() {
         ObservableList<appointment> appointments = FXCollections.observableArrayList();
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
@@ -79,8 +87,10 @@ public class appointmentsDAO {
         }
         return appointments;
     }
-
-    //increments new appointment ID by 1 using the current max value of appointment ID in the local database and returns the new appointment ID.
+    /***
+     * Increments new appointment ID by 1 using the current max value of appointment ID in the local database and returns the new appointment ID.
+     * @return newID
+     */
     public static int newAppointmentID(){
         int newID = 1;
         try {
@@ -94,8 +104,10 @@ public class appointmentsDAO {
         }
         return newID;
     }
-
-    //delete appointment from local database using a particular appointment ID
+    /***
+     * Delete appointment from local database using a particular appointment ID
+     * @param apptID
+     */
     public static void deleteAppointmentByID(int apptID) {
         try {
             PreparedStatement sqlStatement = JDBC.connection.prepareStatement("DELETE FROM APPOINTMENTS WHERE Appointment_ID = ?;");
@@ -105,8 +117,14 @@ public class appointmentsDAO {
             error.printStackTrace();
         }
     }
-
-    //check for any conflict or duplicate appointments in the local database within a particular timeframe using appointment ID
+    /***
+     * Check for any conflict or duplicate appointments in the local database within a particular timeframe using appointment ID
+     * @param apptID
+     * @return boolean
+     * @throws SQLException
+     * @param start
+     * @param end
+     */
     public static boolean checkForConflict(int apptID, LocalDateTime start, LocalDateTime end) throws SQLException {
         PreparedStatement sqlStatement = JDBC.connection.prepareStatement("SELECT * FROM APPOINTMENTS WHERE Appointment_ID != ? AND (? BETWEEN Start AND End OR ? BETWEEN Start AND End OR ? > End AND ? < Start);");
         sqlStatement.setInt(1, apptID);
@@ -117,8 +135,11 @@ public class appointmentsDAO {
         ResultSet resultSet = sqlStatement.executeQuery();
         return resultSet.next();
     }
-
-    //look for all appointments in the local database using a particular type
+    /***
+     * Look for all appointments in the local database using a particular type
+     * @param type
+     * @return appointments
+     */
     public static ObservableList<appointment> getAppointmentsByType(String type) {
         ObservableList<appointment> appointments = FXCollections.observableArrayList();
         try {
@@ -143,8 +164,10 @@ public class appointmentsDAO {
         }
         return appointments;
     }
-
-    //lookup a list of all types of appointments in the local database
+    /***
+     * Lookup a list of all types of appointments in the local database
+     * @return a list of all types of appointments
+     */
     public static ObservableList<String> getAllAppointmentTypes() {
         ObservableList<String> allTypes = FXCollections.observableArrayList();
         try {
@@ -159,8 +182,10 @@ public class appointmentsDAO {
         }
         return allTypes;
     }
-
-    //delete every appointment from local database that is connected to a particular customer
+    /***
+     * Delete all appointments from local database that are connected to a particular customer
+     * @param apptCustomerID
+     */
     public static void deleteAppointmentsByCustomerID(int apptCustomerID) {
         try {
             PreparedStatement sqlStatement = JDBC.connection.prepareStatement("DELETE FROM APPOINTMENTS WHERE Customer_ID = ?;");
@@ -170,8 +195,11 @@ public class appointmentsDAO {
             error.printStackTrace();
         }
     }
-
-    //look for all appointments in the local database using a particular customer ID
+    /***
+     * Look for all appointments in the local database using a particular customer ID
+     * @param customerID
+     * @return appointments
+     */
     public static ObservableList<appointment> getAppointmentsByCustomerID(int customerID) {
         ObservableList<appointment> appointments = FXCollections.observableArrayList();
         try {
@@ -196,8 +224,18 @@ public class appointmentsDAO {
         }
         return appointments;
     }
-
-    //allow modifying and updating appointment data in local database
+    /***
+     * Allow modifying and updating appointment data in local database
+     * @param apptID
+     * @param apptTitle
+     * @param apptDescription
+     * @param apptLocation
+     * @param apptType
+     * @param apptStart
+     * @param apptEnd
+     * @param apptUpdatedBy
+     * @param apptContactID
+     */
     public static void modifyAppointment(int apptID, String apptTitle, String apptDescription, String apptLocation, String apptType, Timestamp apptStart, Timestamp apptEnd,String apptUpdatedBy, int apptContactID) {
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         try {
@@ -217,8 +255,20 @@ public class appointmentsDAO {
             error.printStackTrace();
         }
     }
-
-    //insert data for new appointment into local database.
+    /***
+     * Insert data for new appointment into local database
+     * @param apptTitle
+     * @param apptID
+     * @param apptDescription
+     * @param apptLocation
+     * @param apptType
+     * @param apptStart
+     * @param apptEnd
+     * @param apptCreatedBy
+     * @param apptContactID
+     * @param apptCustomerID
+     * @param apptUserID
+     */
     public static void insertNewAppointment(int apptID, String apptTitle, String apptDescription, String apptLocation, String apptType, Timestamp apptStart, Timestamp apptEnd, int apptCustomerID, int apptUserID, int apptContactID, String apptCreatedBy, String apptUpdatedBy) {
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         try {
@@ -242,8 +292,11 @@ public class appointmentsDAO {
             error.printStackTrace();
         }
     }
-
-    //look for all appointments in the local database using a particular contact ID
+    /***
+     * Look for all appointments in the local database using a particular contact ID
+     * @param contactID
+     * @return appointments
+     */
     public static ObservableList<appointment> getAppointmentsByContactID(int contactID) {
         ObservableList<appointment> appointments = FXCollections.observableArrayList();
         try {
@@ -268,8 +321,11 @@ public class appointmentsDAO {
         }
         return appointments;
     }
-
-    //look for all appointments in the local database using a particular month of the year
+    /***
+     * Look for all appointments in the local database using a particular month of the year
+     * @param month
+     * @return appointments
+     */
     public static ObservableList<appointment> getAppointmentsByMonth(String month) {
         ObservableList<appointment> appointments = FXCollections.observableArrayList();
         try {
@@ -294,8 +350,10 @@ public class appointmentsDAO {
         }
         return appointments;
     }
-
-    //get data from local database and return a list of all appointments stored in there.
+    /***
+     * Get data from local database and return a list of all appointments stored in there.
+     * @return appointments
+     */
     public static ObservableList<appointment> getAllAppointments() {
         ObservableList<appointment> appointments = FXCollections.observableArrayList();
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");

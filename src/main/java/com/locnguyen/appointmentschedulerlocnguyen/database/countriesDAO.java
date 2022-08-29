@@ -7,9 +7,16 @@ import javafx.collections.ObservableList;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+/***
+ * Public class countriesDAO
+ * @author Loc Nguyen
+ */
 public class countriesDAO {
-    //lookup country name within the local database using a particular country ID
+    /***
+     * Lookup country name within the local database using a particular country ID
+     * @param ctryID
+     * @return country name
+     */
     public static String getCtryNameByCtryID(int ctryID) {
         String ctryName = "";
         try {
@@ -23,8 +30,11 @@ public class countriesDAO {
         }
         return ctryName;
     }
-
-    //lookup country ID within the local database using a particular country name
+    /***
+     * Lookup country ID within the local database using a particular country name
+     * @param ctryName
+     * @return country ID
+     */
     public static int getCtryIDByCtryName(String ctryName) {
         int ctryID = 0;
         try {
@@ -38,8 +48,10 @@ public class countriesDAO {
         }
         return ctryID;
     }
-
-    //lookup a list of all country names that is currently inside the local database
+    /***
+     * Lookup a list of all country names that is currently inside the local database
+     * @return country names
+     */
     public static ObservableList<String> getAllCtryNames() {
         ObservableList<String> allCtry = FXCollections.observableArrayList();
         try {

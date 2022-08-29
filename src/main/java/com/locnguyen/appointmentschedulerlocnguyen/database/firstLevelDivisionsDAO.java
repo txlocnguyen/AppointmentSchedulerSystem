@@ -7,9 +7,16 @@ import javafx.collections.ObservableList;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+/***
+ * Public class firstLevelDivisionsDAO
+ * @author Loc Nguyen
+ */
 public class firstLevelDivisionsDAO {
-    //lookup division ID in the local database using a particular division name
+    /***
+     * Lookup division ID in the local database using a particular division name
+     * @param divName
+     * @return division ID
+     */
     public static int getDivIDByDivName(String divName){
         int divID = 0;
         try {
@@ -24,8 +31,11 @@ public class firstLevelDivisionsDAO {
         }
         return divID;
     }
-
-    //lookup division name in the local database using a particular division ID
+    /***
+     * Lookup division name in the local database using a particular division ID
+     * @param divID
+     * @return division name
+     */
     public static String getDivNameByDivID(int divID){
         String divName = "";
         try {
@@ -40,8 +50,11 @@ public class firstLevelDivisionsDAO {
         }
         return divName;
    }
-
-   //lookup division country ID in the local database using a particular division name
+    /***
+     * Lookup division country ID in the local database using a particular division name
+     * @param divName
+     * @return division country ID
+     */
     public static int getDivCountryIDByDivName(String divName){
         int divCountryID = 0;
         try {
@@ -56,8 +69,11 @@ public class firstLevelDivisionsDAO {
         }
         return divCountryID;
     }
-
-    //lookup a list of division name in the local database using a particular country ID
+    /***
+     * Lookup a list of division name in the local database using a particular country ID
+     * @param divCountryID
+     * @return list of division names
+     */
     public static ObservableList<String> getDivNameByDivCountryID(int divCountryID){
         ObservableList<String> divName = FXCollections.observableArrayList();
         try {
@@ -72,8 +88,10 @@ public class firstLevelDivisionsDAO {
         }
         return divName;
     }
-
-    //lookup a list contains all division names currently in the local database
+    /***
+     * Lookup a list contains all division names currently in the local database
+     * @return list of division names
+     */
     public static ObservableList<String> getAllDivNames(){
         ObservableList<String> divName = FXCollections.observableArrayList();
         try {

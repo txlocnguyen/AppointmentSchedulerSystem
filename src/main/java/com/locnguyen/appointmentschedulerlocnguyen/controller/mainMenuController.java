@@ -23,7 +23,10 @@ import java.net.URL;
 import java.util.Locale;
 import java.util.Optional;
 import java.util.ResourceBundle;
-
+/***
+ * Public controller class mainMenuController
+ * @author Loc Nguyen
+ */
 public class mainMenuController implements Initializable {
 
     @FXML
@@ -131,7 +134,11 @@ public class mainMenuController implements Initializable {
     ObservableList<appointment> apptList;
     ObservableList<customers> custList;
     ResourceBundle resourceBundle = ResourceBundle.getBundle("Languages", Locale.getDefault());
-    //initialize method, fill both tables with data pulled from local database
+    /***
+     * initialize method, fill both tables with data pulled from local database
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         apptTableApptID.setCellValueFactory(new PropertyValueFactory<>("apptID"));
@@ -155,8 +162,11 @@ public class mainMenuController implements Initializable {
         custList = customersDAO.getAllCustomers();
         customerTableView.setItems(custList);
     }
-
-    //handle button click event for opening reports screen
+    /***
+     * Handle button click event for opening reports screen
+     * @param e
+     * @throws IOException
+     */
     public void reportsClicked(ActionEvent e) throws IOException{
         FXMLLoader loader = new FXMLLoader(Main.class.getResource("/reportScreen.fxml"));
         Scene scene = new Scene(loader.load());
@@ -164,8 +174,10 @@ public class mainMenuController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
-
-    //handle button click event for logging out
+    /***
+     * Handle button click event for logging out
+     * @param e
+     */
     public void logoutClicked(ActionEvent e){
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle(resourceBundle.getString("logOutConfirm"));
@@ -185,8 +197,10 @@ public class mainMenuController implements Initializable {
             stage.show();
         }
     }
-
-    //handle button click event for editing appointment
+    /***
+     * Handle button click event for editing appointment
+     * @throws IOException
+     */
     public void modApptClicked() throws IOException{
         appointment appt = apptTableView.getSelectionModel().getSelectedItem();
         if(appt != null){
@@ -205,8 +219,10 @@ public class mainMenuController implements Initializable {
             alert.showAndWait();
         }
     }
-
-    //handle button click event for adding appointment
+    /***
+     * Handle button click event for adding appointment
+     * @throws IOException
+     */
     public void addApptClicked() throws IOException{
         customers cust = customerTableView.getSelectionModel().getSelectedItem();
         if(cust != null){
@@ -225,15 +241,19 @@ public class mainMenuController implements Initializable {
             alert.showAndWait();
         }
     }
-
-    //handle clicking radio button to view appointments by month
+    /***
+     * Handle clicking radio button to view appointments by month
+     */
     public void viewMonthClicked(){
         monthComboBox.setVisible(true);
         monthComboBox.setValue("");
         monthComboBox.getItems().addAll("JANUARY", "FEBRUARY", "MARCH", "APRIL", "MAY", "JUNE", "JULY", "AUGUST", "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER");
     }
-
-    //handle button click event for adding customer
+    /***
+     * Handle button click event for adding customer
+     * @param e
+     * @throws IOException
+     */
     public void addCustomerClicked(ActionEvent e) throws IOException{
         FXMLLoader loader = new FXMLLoader(Main.class.getResource("/customerAdding.fxml"));
         Scene scene = new Scene(loader.load());
@@ -241,21 +261,26 @@ public class mainMenuController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
-
-    //handle clicking radio button to view all appointments
+    /***
+     * Handle clicking radio button to view all appointments
+     */
     public void viewAllClicked(){
         monthComboBox.setVisible(false);
         apptList = appointmentsDAO.getAllAppointments();
         apptTableView.setItems(apptList);
     }
-
-    //handle grouping appointments by month after select a particular month in the drop-down combo box
+    /***
+     * Handle grouping appointments by month after select a particular month in the drop-down combo box
+     */
     public void groupApptByMonth(){
         apptList = appointmentsDAO.getAppointmentsByMonth(monthComboBox.getSelectionModel().getSelectedItem());
         apptTableView.setItems(apptList);
     }
-
-    //handle button click event for deleting appointment
+    /***
+     * Handle button click event for deleting appointment
+     * @param e
+     * Lambda expression is used to confirm if the user really wants to delete the selected appointment.
+     */
     public void deleteApptClicked(ActionEvent e){
         appointment appt = apptTableView.getSelectionModel().getSelectedItem();
         if(appt != null){
@@ -288,14 +313,17 @@ public class mainMenuController implements Initializable {
             alert.showAndWait();
         }
     }
-
-    //handle clicking radio button to view appointments by week
+    /***
+     * Handle clicking radio button to view appointments by week
+     */
     public void viewWeekClicked(){
         monthComboBox.setVisible(false);
         groupApptByWeek();
     }
-
-    //handle button click event for deleting customer
+    /***
+     * Handle button click event for deleting customer
+     * @param e
+     */
     public void deleteCustomerClicked(ActionEvent e){
         customers cust = customerTableView.getSelectionModel().getSelectedItem();
         if(cust != null){
@@ -326,9 +354,10 @@ public class mainMenuController implements Initializable {
             alert.showAndWait();
         }
     }
-
-
-    //handle button click event for editing customer
+    /***
+     * Handle button click event for editing customer
+     * @throws IOException
+     */
     public void modCustomerClicked() throws IOException{
         customers cust = customerTableView.getSelectionModel().getSelectedItem();
         if(cust != null){
@@ -347,8 +376,9 @@ public class mainMenuController implements Initializable {
             alert.showAndWait();
         }
     }
-
-    //handle grouping appointments by week after clicking radio button to view appointments by week
+    /***
+     * Handle grouping appointments by week after select a particular week in the drop-down combo box
+     */
     public void groupApptByWeek(){
         monthComboBox.setVisible(false);
         apptList = appointmentsDAO.getAppointmentsByWeek();

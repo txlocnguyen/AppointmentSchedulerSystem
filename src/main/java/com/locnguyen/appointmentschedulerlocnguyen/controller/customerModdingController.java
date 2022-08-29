@@ -18,7 +18,10 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
-
+/***
+ * Public controller class customerModdingController.
+ * @author Loc Nguyen
+ */
 public class customerModdingController implements Initializable {
 
     @FXML
@@ -68,15 +71,20 @@ public class customerModdingController implements Initializable {
 
     @FXML
     private Button saveBttn;
-
-    //initialize method and fill the dropdown menus with data from the database
+    /***
+     * Initialize method and fill the dropdown menus with data from the database.
+     * @param u
+     * @param rb
+     */
     @Override
     public void initialize(URL u, ResourceBundle rb) {
         locationCountryComboBox.setItems(countriesDAO.getAllCtryNames());
         locationDivisionComboBox.setItems(firstLevelDivisionsDAO.getDivNameByDivCountryID(countriesDAO.getCtryIDByCtryName(locationCountryComboBox.getSelectionModel().getSelectedItem())));
     }
-
-    //handle filling the form with data of the selected customer
+    /***
+     * Handles filling the form with data of the selected customer.
+     * @param cust
+     */
     public void fillForm(customers cust){
         customerIDTxtField.setText(String.valueOf(cust.getCustomerID()));
         nameTxtField.setText(cust.getCustomerName());
@@ -87,14 +95,17 @@ public class customerModdingController implements Initializable {
         locationCountryComboBox.setValue(countriesDAO.getCtryNameByCtryID(firstLevelDivisionsDAO.getDivCountryIDByDivName(locationDivisionComboBox.getSelectionModel().getSelectedItem())));
         locationDivisionComboBox.setItems(firstLevelDivisionsDAO.getDivNameByDivCountryID(countriesDAO.getCtryIDByCtryName(locationCountryComboBox.getSelectionModel().getSelectedItem())));
     }
-
-    //handle filling the dropdown menu for first level divisions when country is selected
+    /***
+     * Handle filling the dropdown menu for first level divisions when country is selected.
+     */
     public void countrySelected() {
         locationDivisionComboBox.setValue(null);
         locationDivisionComboBox.setItems(firstLevelDivisionsDAO.getDivNameByDivCountryID(countriesDAO.getCtryIDByCtryName(locationCountryComboBox.getSelectionModel().getSelectedItem())));
     }
-
-    //handle button click for cancel button and return to main menu
+    /***
+     * Handle button click for cancel button and return to main menu.
+     * @param e
+     */
     public void cancelClicked(ActionEvent e){
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Cancel Modifying Customer");
@@ -114,8 +125,10 @@ public class customerModdingController implements Initializable {
             }
         }
     }
-
-    //handle button click for save button and save the changes of the modified customer to the database
+    /***
+     * Handle button click for save button and save the changes of the modified customer to the database.
+     * @param e
+     */
     public void saveClicked(ActionEvent e) {
         try {
             int custID = Integer.parseInt(customerIDTxtField.getText());

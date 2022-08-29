@@ -11,9 +11,21 @@ import java.sql.SQLException;
 import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
-
+/***
+ * Public class customersDAO
+ * @author Loc Nguyen
+ */
 public class customersDAO {
-    //replace a customer data in the local database with newly updated data
+    /***
+     * Replace a customer data in the local database with newly updated data
+     * @param customerID
+     * @param customerName
+     * @param customerPhone
+     * @param customerAddress
+     * @param customerPostalCode
+     * @param customerDivisionID
+     * @param customerUpdatedBy
+     */
     public static void modifyingCustomer(int customerID, String customerName, String customerAddress, String customerPostalCode, String customerPhone, int customerDivisionID, String customerUpdatedBy) {
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         try {
@@ -31,8 +43,10 @@ public class customersDAO {
             error.printStackTrace();
         }
     }
-
-    //increments new customer ID by 1 using the current max value of customer ID in the local database and returns the new customer ID.
+    /***
+     * Increments new customer ID by 1 using the current max value of customer ID in the local database and returns the new customer ID.
+     * @return new customer ID
+     */
     public static int getNewCustomerID() {
         int newCustomerID = 1;
         try {
@@ -46,8 +60,10 @@ public class customersDAO {
         }
         return newCustomerID;
     }
-
-    //lookup a list of all customers currently in the local database and return their data
+    /***
+     * Lookup a list of all customers currently in the local database and return their data
+     * @return list of all customers currently in the local database
+     */
     public static ObservableList<customers> getAllCustomers() {
         ObservableList<customers> allCust = FXCollections.observableArrayList();
         try {
@@ -62,8 +78,17 @@ public class customersDAO {
         }
         return allCust;
     }
-
-    //insert data for a new customer into the local database
+    /***
+     * Insert data for a new customer into the local database
+     * @param customerName
+     * @param customerID
+     * @param customerAddress
+     * @param customerPostalCode
+     * @param customerPhone
+     * @param customerDivisionID
+     * @param customerCreatedBy
+     * @param customerUpdatedBy
+     */
     public static void insertNewCustomer(int customerID, String customerName, String customerAddress, String customerPostalCode, String customerPhone, int customerDivisionID, String customerCreatedBy, String customerUpdatedBy) {
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         try{
@@ -83,8 +108,10 @@ public class customersDAO {
             error.printStackTrace();
         }
     }
-
-    //remove a customer data from the local database using a particular customer ID
+    /***
+     * Remove a customer data from the local database using a particular customer ID
+     * @param customerID
+     */
     public static void removeCustomer(int customerID) {
         try {
             PreparedStatement sqlStatement = JDBC.connection.prepareStatement("DELETE FROM customers WHERE Customer_ID = ?");
@@ -94,8 +121,11 @@ public class customersDAO {
             error.printStackTrace();
         }
     }
-
-    //lookup a customer ID in the local database using a particular customer name
+    /***
+     * Lookup a customer ID in the local database using a particular customer name
+     * @param name
+     * @return customer ID
+     */
     public static int getCustomerIDByCustomerName(String name){
         int customerID = 0;
         try{
@@ -110,8 +140,10 @@ public class customersDAO {
         }
         return customerID;
     }
-
-    //lookup a list of all customers' name currently in the local database
+    /***
+     * Lookup a list of all customers' name currently in the local database
+     * @return list of all customers' name currently in the local database
+     */
     public static ObservableList<String> getAllCustomerNames() {
         ObservableList<String> allCustomerNames = FXCollections.observableArrayList();
         try {

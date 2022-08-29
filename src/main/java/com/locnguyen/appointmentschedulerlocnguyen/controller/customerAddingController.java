@@ -17,7 +17,10 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
-
+/***
+ * Public controller class customerAddingController
+ * @author Loc Nguyen
+ */
 public class customerAddingController implements Initializable {
 
     @FXML
@@ -67,15 +70,20 @@ public class customerAddingController implements Initializable {
 
     @FXML
     private Button saveBttn;
-
-    //initialize method and fill out dropdown menus with country and first level divisions from local database
+    /***
+     * Initialize method and fill out dropdown menus with country and first level divisions from local database
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
            locationCountryComboBox.setItems(countriesDAO.getAllCtryNames());
            locationDivisionComboBox.setItems(firstLevelDivisionsDAO.getDivNameByDivCountryID(countriesDAO.getCtryIDByCtryName(locationCountryComboBox.getSelectionModel().getSelectedItem())));
     }
-
-    //handle button click for cancel button and return to main menu
+    /***
+     * Handle button click for cancel button and return to main menu
+     * @param e
+     */
     public void cancelClicked(ActionEvent e) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Cancel Adding Customer");
@@ -95,13 +103,16 @@ public class customerAddingController implements Initializable {
             }
         }
     }
-
-    //handle filling the dropdown menu for first level divisions when country is selected
+    /***
+     * Handle filling the dropdown menu for first level divisions when country is selected
+     */
     public void countrySelected() {
         locationDivisionComboBox.setItems(firstLevelDivisionsDAO.getDivNameByDivCountryID(countriesDAO.getCtryIDByCtryName(locationCountryComboBox.getSelectionModel().getSelectedItem())));
     }
-
-    //handle button click for save button and add customer to local database
+    /***
+     * Handle button click for save button and add customer to local database
+     * @param e
+     */
     @FXML
     public void saveClicked(ActionEvent e) {
         try {

@@ -21,7 +21,10 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Locale;
 import java.util.ResourceBundle;
-
+/***
+ * Public controller class loginScreenController
+ * @author Loc Nguyen
+ */
 public class loginScreenController implements Initializable {
     @FXML
     private Button exitBttn;
@@ -51,8 +54,11 @@ public class loginScreenController implements Initializable {
     private TextField userNameTxtField;
 
     ResourceBundle resourceBundle = ResourceBundle.getBundle("Languages", Locale.getDefault());
-
-    //change language to french based on the user's computer main language.
+    /***
+     * Initialize method. Change language to French based on the user's computer default language.
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         timeZoneData.setText(ZoneId.systemDefault().toString());
@@ -69,14 +75,16 @@ public class loginScreenController implements Initializable {
             System.out.println("Error in translating language.");
         }
     }
-
-    //exit the program when exit button is clicked
+    /***
+     * Exit the program when exit button is clicked.
+     */
     @FXML
     public void exitProgram(){
         System.exit(0);
     }
-
-    //lookup all appointments currently in the local database and alert user if there is an upcoming appointment within 15 minutes
+    /***
+     * Lookup all appointments currently in the local database and alert user if there is an upcoming appointment within 15 minutes.
+     */
     public void getAllApptsIn15Min(){
         ObservableList<appointment> allAppts = appointmentsDAO.getAllAppointments();
         LocalDateTime past15minutes = LocalDateTime.now().minusMinutes(15);
@@ -113,8 +121,11 @@ public class loginScreenController implements Initializable {
             alert.showAndWait();
         }
     }
-
-    //login to the system when login button is clicked
+    /***
+     * Login to the system when login button is clicked.
+     * @param e
+     * @throws SQLException
+     */
     @FXML
     public void loginToSystem(ActionEvent e) throws SQLException {
         String usrname = userNameTxtField.getText();

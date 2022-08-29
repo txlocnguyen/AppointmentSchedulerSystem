@@ -21,7 +21,10 @@ import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 import java.util.ResourceBundle;
-
+/***
+ * Public controller class appointmentModdingController
+ * @author Loc Nguyen
+ */
 public class appointmentModdingController implements Initializable {
 
     @FXML
@@ -104,8 +107,12 @@ public class appointmentModdingController implements Initializable {
 
     @FXML
     private TextField userIDTxtField;
-
-    //initilize method. Fill out drop down menus with appropriate values. Prevent date picker from selecting past dates and weekends.
+    /***
+     * Initializes method. Fill out drop down menus with appropriate values. Prevent date picker from selecting past dates and weekends.
+     * @param u
+     * @param rb
+     * Lambda expression is used to prevent the date picker from selecting past dates and weekends.
+     */
     @Override
     public void initialize(URL u, ResourceBundle rb) {
         apptDatePicker.setDayCellFactory(datePicker -> new DateCell() {
@@ -121,8 +128,10 @@ public class appointmentModdingController implements Initializable {
         apptEndTimeMinuteComboBox.getItems().addAll("00", "15", "30", "45");
         contactComboBox.setItems(contactsDAO.getAllCntsName());
     }
-
-    //fill out text fields with data from appointment selected in the appointment table view.
+    /***
+     * Fill out text fields with data from appointment selected in the appointment table view.
+     * @param appt
+     */
     public void fillForm(appointment appt){
         apptIDTxtField.setText(String.valueOf(appt.getApptID()));
         titleTxtField.setText(appt.getApptTitle());
@@ -138,8 +147,10 @@ public class appointmentModdingController implements Initializable {
         apptEndTimeHourComboBox.setValue(appt.getApptEnd().toInstant().atZone(ZoneOffset.UTC).withZoneSameInstant(usersDAO.getUserCurrentTimeZone()).format(DateTimeFormatter.ofPattern("HH")));
         apptEndTimeMinuteComboBox.setValue(appt.getApptEnd().toInstant().atZone(ZoneOffset.UTC).withZoneSameInstant(usersDAO.getUserCurrentTimeZone()).format(DateTimeFormatter.ofPattern("mm")));
     }
-
-    //handle button click for cancel button and go back to main screen.
+    /***
+     * Handle button click for cancel button and go back to main screen.
+     * @param e
+     */
     public void cancelClicked(ActionEvent e){
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Cancel Modifying Appointment");
@@ -159,15 +170,24 @@ public class appointmentModdingController implements Initializable {
             }
         }
     }
-
-    //handle checking for overlap appointments when scheduling a new appointment
-    //return true if there is an overlap, return false if there's no overlap.
+    /***
+     * Handle checking for overlap appointments when scheduling a new appointment.
+     * @param start
+     * @param end
+     * @param apptID
+     * @throws SQLException
+     * @return true if there is an overlap, return false if there's no overlap.
+     */
     public Boolean checkForOverlapAppts(LocalDateTime start, LocalDateTime end, int apptID) throws SQLException {
         return appointmentsDAO.checkForConflict(apptID, start, end);
     }
-
-    //handle checking for out of business hours when scheduling a new appointment
-    //return true if the appointment is out of business hours, return false if it's not.
+    /***
+     * Handle checking for out of business hours when scheduling a new appointment.
+     * @param start
+     * @param end
+     * @param apptDate
+     * @return true if the appointment is out of business hours, return false if it's not.
+     */
     public Boolean checkForOOBHAppts(LocalDateTime start, LocalDateTime end, LocalDate apptDate) {
         ZonedDateTime apptStartTimeConverted = ZonedDateTime.of(start, usersDAO.getUserCurrentTimeZone());
         ZonedDateTime apptEndTimeConverted = ZonedDateTime.of(end, usersDAO.getUserCurrentTimeZone());
@@ -175,8 +195,11 @@ public class appointmentModdingController implements Initializable {
         ZonedDateTime officeHoursEnd = ZonedDateTime.of(apptDate, LocalTime.of(22,0),ZoneId.of("America/New_York"));
         return (apptStartTimeConverted.isBefore(officeHoursStart) || apptEndTimeConverted.isAfter(officeHoursEnd) || apptStartTimeConverted.isAfter(officeHoursEnd) || apptEndTimeConverted.isBefore(officeHoursStart) || apptEndTimeConverted.isBefore(apptStartTimeConverted));
     }
-
-    //handle button click for save button and save modified appointment to local database
+    /***
+     * Handle button click for save button and save modified appointment to local database.
+     * @param e
+     * @throws SQLException
+     */
     public void saveClicked(ActionEvent e) throws SQLException{
         try{
             int apptID = Integer.parseInt(apptIDTxtField.getText());
