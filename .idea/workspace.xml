@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="29f4d579-a9ee-411d-b01a-d4c83957a7e4" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/intellij-javadocs-4.0.1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/login_activity.txt" beforeDir="false" afterPath="$PROJECT_DIR$/login_activity.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/locnguyen/appointmentschedulerlocnguyen/controller/appointmentAddingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/locnguyen/appointmentschedulerlocnguyen/controller/appointmentAddingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/locnguyen/appointmentschedulerlocnguyen/controller/appointmentModdingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/locnguyen/appointmentschedulerlocnguyen/controller/appointmentModdingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/locnguyen/appointmentschedulerlocnguyen/controller/loginScreenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/locnguyen/appointmentschedulerlocnguyen/controller/loginScreenController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/locnguyen/appointmentschedulerlocnguyen/controller/mainMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/locnguyen/appointmentschedulerlocnguyen/controller/mainMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/locnguyen/appointmentschedulerlocnguyen/database/appointmentsDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/locnguyen/appointmentschedulerlocnguyen/database/appointmentsDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/locnguyen/appointmentschedulerlocnguyen/models/appointment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/locnguyen/appointmentschedulerlocnguyen/models/appointment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Languages_en.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ResourceBundle_en.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Languages_fr.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ResourceBundle_fr.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/loginScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/loginScreen.fxml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2E6VXPMEYXtHwmiKzexlSDnVuKf" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Program Files/Java/javafx-sdk-18.0.2/lib&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.23448277&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Loc\Documents\Repos\AppointmentSchedulerLocNguyen\src\main\resources" />
+      <recent name="C:\Users\Loc\Documents\Repos\AppointmentSchedulerLocNguyen\src\main\java\com\locnguyen\appointmentschedulerlocnguyen\helper" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.locnguyen.appointmentschedulerlocnguyen.Main.Main" />
+      <module name="AppoinmentSchedulerLocNguyen" />
+      <option name="VM_PARAMETERS" value="--module-path ${PATH_TO_FX} --add-modules javafx.controls,javafx.fxml" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="29f4d579-a9ee-411d-b01a-d4c83957a7e4" name="Changes" comment="" />
+      <created>1661916060343</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1661916060343</updated>
+    </task>
+    <servers />
+  </component>
+</project>

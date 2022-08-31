@@ -133,7 +133,7 @@ public class mainMenuController implements Initializable {
 
     ObservableList<appointment> apptList;
     ObservableList<customers> custList;
-    ResourceBundle resourceBundle = ResourceBundle.getBundle("Languages", Locale.getDefault());
+    ResourceBundle rb = ResourceBundle.getBundle("ResourceBundle", Locale.getDefault());
     /***
      * initialize method, fill both tables with data pulled from local database
      * @param url
@@ -180,9 +180,9 @@ public class mainMenuController implements Initializable {
      */
     public void logoutClicked(ActionEvent e){
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle(resourceBundle.getString("logOutConfirm"));
-        alert.setHeaderText(resourceBundle.getString("logOutConfirm"));
-        alert.setContentText(resourceBundle.getString("logOutMsg"));
+        alert.setTitle(rb.getString("logOutConfirm"));
+        alert.setHeaderText(rb.getString("logOutConfirm"));
+        alert.setContentText(rb.getString("logOutMsg"));
         Optional<ButtonType> result = alert.showAndWait();
         if(result.get() == ButtonType.OK){
             FXMLLoader loader = new FXMLLoader(Main.class.getResource("/loginScreen.fxml"));
@@ -213,9 +213,9 @@ public class mainMenuController implements Initializable {
             stage.show();
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle(resourceBundle.getString("noApptSelected"));
-            alert.setHeaderText(resourceBundle.getString("noApptSelected"));
-            alert.setContentText(resourceBundle.getString("noApptSelectedMod"));
+            alert.setTitle(rb.getString("noApptSelected"));
+            alert.setHeaderText(rb.getString("noApptSelected"));
+            alert.setContentText(rb.getString("noApptSelectedMod"));
             alert.showAndWait();
         }
     }
@@ -235,9 +235,9 @@ public class mainMenuController implements Initializable {
             stage.show();
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle(resourceBundle.getString("noCustSelected"));
-            alert.setHeaderText(resourceBundle.getString("noCustSelected"));
-            alert.setContentText(resourceBundle.getString("noCustSelectedAdd"));
+            alert.setTitle(rb.getString("noCustSelected"));
+            alert.setHeaderText(rb.getString("noCustSelected"));
+            alert.setContentText(rb.getString("noCustSelectedAdd"));
             alert.showAndWait();
         }
     }
@@ -285,9 +285,9 @@ public class mainMenuController implements Initializable {
         appointment appt = apptTableView.getSelectionModel().getSelectedItem();
         if(appt != null){
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle(resourceBundle.getString("apptDelConfirm"));
-            alert.setHeaderText(resourceBundle.getString("apptDelConfirm"));
-            alert.setContentText(resourceBundle.getString("apptDelMsg") + appt.getApptID());
+            alert.setTitle(rb.getString("apptDelConfirm"));
+            alert.setHeaderText(rb.getString("apptDelConfirm"));
+            alert.setContentText(rb.getString("apptDelMsg") + appt.getApptID());
             alert.showAndWait().ifPresent(buttonType -> {
               if(buttonType == ButtonType.OK){
                   appointmentsDAO.deleteAppointmentByID(appt.getApptID());
@@ -307,9 +307,9 @@ public class mainMenuController implements Initializable {
           });
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle(resourceBundle.getString("noApptSelected"));
-            alert.setHeaderText(resourceBundle.getString("noApptSelected"));
-            alert.setContentText(resourceBundle.getString("noApptSelectedDel"));
+            alert.setTitle(rb.getString("noApptSelected"));
+            alert.setHeaderText(rb.getString("noApptSelected"));
+            alert.setContentText(rb.getString("noApptSelectedDel"));
             alert.showAndWait();
         }
     }
@@ -328,9 +328,9 @@ public class mainMenuController implements Initializable {
         customers cust = customerTableView.getSelectionModel().getSelectedItem();
         if(cust != null){
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle(resourceBundle.getString("custDelConfirm"));
-            alert.setHeaderText(resourceBundle.getString("custDelConfirm"));
-            alert.setContentText(resourceBundle.getString("custDelMsg") + cust.getCustomerID());
+            alert.setTitle(rb.getString("custDelConfirm"));
+            alert.setHeaderText(rb.getString("custDelConfirm"));
+            alert.setContentText(rb.getString("custDelMsg") + cust.getCustomerID());
             Optional<ButtonType> result = alert.showAndWait();
             if(result.get() == ButtonType.OK){
                 appointmentsDAO.deleteAppointmentsByCustomerID(cust.getCustomerID());
@@ -348,9 +348,9 @@ public class mainMenuController implements Initializable {
             }
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle(resourceBundle.getString("noCustSelected"));
-            alert.setHeaderText(resourceBundle.getString("noCustSelected"));
-            alert.setContentText(resourceBundle.getString("noCustSelectedDel"));
+            alert.setTitle(rb.getString("noCustSelected"));
+            alert.setHeaderText(rb.getString("noCustSelected"));
+            alert.setContentText(rb.getString("noCustSelectedDel"));
             alert.showAndWait();
         }
     }
@@ -370,9 +370,9 @@ public class mainMenuController implements Initializable {
             stage.show();
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle(resourceBundle.getString("noCustSelected"));
-            alert.setHeaderText(resourceBundle.getString("noCustSelected"));
-            alert.setContentText(resourceBundle.getString("noCustSelectedMod"));
+            alert.setTitle(rb.getString("noCustSelected"));
+            alert.setHeaderText(rb.getString("noCustSelected"));
+            alert.setContentText(rb.getString("noCustSelectedMod"));
             alert.showAndWait();
         }
     }

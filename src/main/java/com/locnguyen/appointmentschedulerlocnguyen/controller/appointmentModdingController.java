@@ -21,6 +21,8 @@ import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.TimeZone;
+
 /***
  * Public controller class appointmentModdingController
  * @author Loc Nguyen
@@ -141,11 +143,11 @@ public class appointmentModdingController implements Initializable {
         customerIDTxtField.setText(String.valueOf(appt.getApptCustomerID()));
         userIDTxtField.setText(String.valueOf(appt.getApptUserID()));
         contactComboBox.setValue(contactsDAO.getCntNameByCntID(appt.getApptContactID()));
-        apptDatePicker.setValue(appt.getApptStart().toLocalDateTime().toLocalDate());
-        apptStartTimeHourComboBox.setValue(appt.getApptStart().toInstant().atZone(ZoneOffset.UTC).withZoneSameInstant(usersDAO.getUserCurrentTimeZone()).format(DateTimeFormatter.ofPattern("HH")));
-        apptStartTimeMinuteComboBox.setValue(appt.getApptStart().toInstant().atZone(ZoneOffset.UTC).withZoneSameInstant(usersDAO.getUserCurrentTimeZone()).format(DateTimeFormatter.ofPattern("mm")));
-        apptEndTimeHourComboBox.setValue(appt.getApptEnd().toInstant().atZone(ZoneOffset.UTC).withZoneSameInstant(usersDAO.getUserCurrentTimeZone()).format(DateTimeFormatter.ofPattern("HH")));
-        apptEndTimeMinuteComboBox.setValue(appt.getApptEnd().toInstant().atZone(ZoneOffset.UTC).withZoneSameInstant(usersDAO.getUserCurrentTimeZone()).format(DateTimeFormatter.ofPattern("mm")));
+        apptDatePicker.setValue(appt.getApptStart().toLocalDate());
+        apptStartTimeHourComboBox.getSelectionModel().select(String.valueOf(appt.getApptStart().atZone(ZoneId.of(TimeZone.getDefault().getID())).format(DateTimeFormatter.ofPattern("HH"))));
+        apptStartTimeMinuteComboBox.getSelectionModel().select(String.valueOf(appt.getApptStart().atZone(ZoneId.of(TimeZone.getDefault().getID())).format(DateTimeFormatter.ofPattern("mm"))));
+        apptEndTimeHourComboBox.getSelectionModel().select(String.valueOf(appt.getApptEnd().atZone(ZoneId.of(TimeZone.getDefault().getID())).format(DateTimeFormatter.ofPattern("HH"))));
+        apptEndTimeMinuteComboBox.getSelectionModel().select(String.valueOf(appt.getApptEnd().atZone(ZoneId.of(TimeZone.getDefault().getID())).format(DateTimeFormatter.ofPattern("mm"))));
     }
     /***
      * Handle button click for cancel button and go back to main screen.
@@ -224,6 +226,8 @@ public class appointmentModdingController implements Initializable {
                 Timestamp apptEndConverted = Timestamp.valueOf(apptEndLocal.atZone(ZoneId.systemDefault()).withZoneSameInstant(ZoneId.of("UTC")).toLocalDateTime());
                 Timestamp apptStartTime = Timestamp.valueOf(apptDate + " " + apptStartTimeHourComboBox.getSelectionModel().getSelectedItem() + ":" + apptStartTimeMinuteComboBox.getSelectionModel().getSelectedItem() + ":00");
                 Timestamp apptEndTime = Timestamp.valueOf(apptDate + " " + apptEndTimeHourComboBox.getSelectionModel().getSelectedItem() + ":" + apptEndTimeMinuteComboBox.getSelectionModel().getSelectedItem() + ":00");
+                Timestamp startSQL = Timestamp.valueOf(LocalDateTime.of(apptDate, LocalTime.parse(apptStartTimeHourComboBox.getSelectionModel().getSelectedItem() + ":" + apptStartTimeMinuteComboBox.getSelectionModel().getSelectedItem())).atZone(ZoneId.of("UTC")).withZoneSameInstant(ZoneId.of("UTC")).toLocalDateTime());
+                Timestamp endSQL = Timestamp.valueOf(LocalDateTime.of(apptDate, LocalTime.parse(apptEndTimeHourComboBox.getSelectionModel().getSelectedItem() + ":" + apptEndTimeMinuteComboBox.getSelectionModel().getSelectedItem())).atZone(ZoneId.of("UTC")).withZoneSameInstant(ZoneId.of("UTC")).toLocalDateTime());
                 if(apptStartTime.after(apptEndTime)){
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Error Modifying Appointment");
@@ -246,7 +250,7 @@ public class appointmentModdingController implements Initializable {
                     alert.showAndWait();
                 }
                 else{
-                    appointmentsDAO.modifyAppointment(apptID, apptTitle, apptDescription, apptLocation, apptType, apptStartConverted, apptEndConverted, apptUpdatedBy, contactID);
+                    appointmentsDAO.modifyAppointment(apptID, apptTitle, apptDescription, apptLocation, apptType, startSQL, endSQL, apptUpdatedBy, contactID);
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("Appointment Modified Successfully");
                     alert.setHeaderText("Appointment Modified Successfully");

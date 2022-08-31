@@ -9,11 +9,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.TimeZone;
+
 /***
  * Public class appointmentsDAO
  * @author Loc Nguyen
@@ -42,8 +45,8 @@ public class appointmentsDAO {
                 String apptDescription = resultSet.getString("Description");
                 String apptLocation = resultSet.getString("Location");
                 String apptType = resultSet.getString("Type");
-                Timestamp apptStart = Timestamp.valueOf(LocalDateTime.parse(String.valueOf(resultSet.getTimestamp("Start")).substring(0, 19), dateTimeFormatter).atZone(ZoneId.of("UTC")).withZoneSameInstant(ZoneId.systemDefault()).format(dateTimeFormatter));
-                Timestamp apptEnd = Timestamp.valueOf(LocalDateTime.parse(String.valueOf(resultSet.getTimestamp("End")).substring(0, 19), dateTimeFormatter).atZone(ZoneId.of("UTC")).withZoneSameInstant(ZoneId.systemDefault()).format(dateTimeFormatter));
+                LocalDateTime apptStart = Timestamp.valueOf(LocalDateTime.parse(String.valueOf(resultSet.getTimestamp("Start")).substring(0, 19), dateTimeFormatter).atZone(ZoneId.of("UTC")).withZoneSameInstant(ZoneId.systemDefault()).format(dateTimeFormatter)).toLocalDateTime();
+                LocalDateTime apptEnd = Timestamp.valueOf(LocalDateTime.parse(String.valueOf(resultSet.getTimestamp("End")).substring(0, 19), dateTimeFormatter).atZone(ZoneId.of("UTC")).withZoneSameInstant(ZoneId.systemDefault()).format(dateTimeFormatter)).toLocalDateTime();
                 int apptCustomerID = resultSet.getInt("Customer_ID");
                 int apptUserID = resultSet.getInt("User_ID");
                 int apptContactID = resultSet.getInt("Contact_ID");
@@ -75,8 +78,8 @@ public class appointmentsDAO {
                 String apptDescription = resultSet.getString("Description");
                 String apptLocation = resultSet.getString("Location");
                 String apptType = resultSet.getString("Type");
-                Timestamp apptStart = resultSet.getTimestamp("Start");
-                Timestamp apptEnd = resultSet.getTimestamp("End");
+                LocalDateTime apptStart = resultSet.getTimestamp("Start").toLocalDateTime();
+                LocalDateTime apptEnd = resultSet.getTimestamp("End").toLocalDateTime();
                 int apptCustomerID = resultSet.getInt("Customer_ID");
                 int apptUserID = resultSet.getInt("User_ID");
                 int apptContactID = resultSet.getInt("Contact_ID");
@@ -152,8 +155,8 @@ public class appointmentsDAO {
                 String apptDescription = resultSet.getString("Description");
                 String apptLocation = resultSet.getString("Location");
                 String apptType = resultSet.getString("Type");
-                Timestamp apptStart = resultSet.getTimestamp("Start");
-                Timestamp apptEnd = resultSet.getTimestamp("End");
+                LocalDateTime apptStart = resultSet.getTimestamp("Start").toLocalDateTime();
+                LocalDateTime apptEnd = resultSet.getTimestamp("End").toLocalDateTime();
                 int apptCustomerID = resultSet.getInt("Customer_ID");
                 int apptUserID = resultSet.getInt("User_ID");
                 int apptContactID = resultSet.getInt("Contact_ID");
@@ -212,8 +215,8 @@ public class appointmentsDAO {
                 String apptDescription = resultSet.getString("Description");
                 String apptLocation = resultSet.getString("Location");
                 String apptType = resultSet.getString("Type");
-                Timestamp apptStart = resultSet.getTimestamp("Start");
-                Timestamp apptEnd = resultSet.getTimestamp("End");
+                LocalDateTime apptStart = resultSet.getTimestamp("Start").toLocalDateTime();
+                LocalDateTime apptEnd = resultSet.getTimestamp("End").toLocalDateTime();
                 int apptCustomerID = resultSet.getInt("Customer_ID");
                 int apptUserID = resultSet.getInt("User_ID");
                 int apptContactID = resultSet.getInt("Contact_ID");
@@ -309,8 +312,8 @@ public class appointmentsDAO {
                 String apptDescription = resultSet.getString("Description");
                 String apptLocation = resultSet.getString("Location");
                 String apptType = resultSet.getString("Type");
-                Timestamp apptStart = resultSet.getTimestamp("Start");
-                Timestamp apptEnd = resultSet.getTimestamp("End");
+                LocalDateTime apptStart = resultSet.getTimestamp("Start").toLocalDateTime();
+                LocalDateTime apptEnd = resultSet.getTimestamp("End").toLocalDateTime();
                 int apptCustomerID = resultSet.getInt("Customer_ID");
                 int apptUserID = resultSet.getInt("User_ID");
                 int apptContactID = resultSet.getInt("Contact_ID");
@@ -338,8 +341,8 @@ public class appointmentsDAO {
                 String apptDescription = resultSet.getString("Description");
                 String apptLocation = resultSet.getString("Location");
                 String apptType = resultSet.getString("Type");
-                Timestamp apptStart = resultSet.getTimestamp("Start");
-                Timestamp apptEnd = resultSet.getTimestamp("End");
+                LocalDateTime apptStart = resultSet.getTimestamp("Start").toLocalDateTime();
+                LocalDateTime apptEnd = resultSet.getTimestamp("End").toLocalDateTime();
                 int apptCustomerID = resultSet.getInt("Customer_ID");
                 int apptUserID = resultSet.getInt("User_ID");
                 int apptContactID = resultSet.getInt("Contact_ID");
@@ -366,13 +369,11 @@ public class appointmentsDAO {
                 String appointmentDescription = resultSet.getString("Description");
                 String appointmentLocation = resultSet.getString("Location");
                 String appointmentType = resultSet.getString("Type");
-                String appointmentStart = String.valueOf(resultSet.getTimestamp("Start")).substring(0, 19);
-                String appointmentEnd = String.valueOf(resultSet.getTimestamp("End")).substring(0, 19);
+                LocalDateTime convertedStart = resultSet.getTimestamp("Start").toLocalDateTime();
+                LocalDateTime convertedEnd = resultSet.getTimestamp("End").toLocalDateTime();
                 int appointmentCustomerID = resultSet.getInt("Customer_ID");
                 int appointmentUserID = resultSet.getInt("User_ID");
                 int appointmentContactID = resultSet.getInt("Contact_ID");
-                Timestamp convertedStart = Timestamp.valueOf(LocalDateTime.parse(appointmentStart, dateTimeFormatter).atZone(ZoneId.of("UTC")).withZoneSameInstant(ZoneId.systemDefault()).format(dateTimeFormatter));
-                Timestamp convertedEnd = Timestamp.valueOf(LocalDateTime.parse(appointmentEnd, dateTimeFormatter).atZone(ZoneId.of("UTC")).withZoneSameInstant(ZoneId.systemDefault()).format(dateTimeFormatter));
                 appointments.add(new appointment(appointmentID, appointmentTitle, appointmentDescription, appointmentLocation, appointmentType, convertedStart, convertedEnd, appointmentCustomerID, appointmentUserID, appointmentContactID));
             }
         } catch (Exception error) {

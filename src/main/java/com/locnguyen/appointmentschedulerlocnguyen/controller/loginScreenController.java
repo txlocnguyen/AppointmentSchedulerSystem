@@ -53,7 +53,8 @@ public class loginScreenController implements Initializable {
     @FXML
     private TextField userNameTxtField;
 
-    ResourceBundle resourceBundle = ResourceBundle.getBundle("Languages", Locale.getDefault());
+    ResourceBundle rb = ResourceBundle.getBundle("ResourceBundle", Locale.getDefault());
+
     /***
      * Initialize method. Change language to French based on the user's computer default language.
      * @param url
@@ -62,18 +63,12 @@ public class loginScreenController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         timeZoneData.setText(ZoneId.systemDefault().toString());
-        try{
-            if(Locale.getDefault().getLanguage().equals("fr")){
-                mainTitleLabel.setText(resourceBundle.getString("mainTitle"));
-                labelForUsername.setText(resourceBundle.getString("username"));
-                labelForPassword.setText(resourceBundle.getString("password"));
-                loginBttn.setText(resourceBundle.getString("loginBtn"));
-                exitBttn.setText(resourceBundle.getString("exitBtn"));
-                timeZoneLabel.setText(resourceBundle.getString("timeZone"));
-            }
-        } catch (Exception error){
-            System.out.println("Error in translating language.");
-        }
+        mainTitleLabel.setText(rb.getString("mainTitle"));
+        labelForUsername.setText(rb.getString("username"));
+        labelForPassword.setText(rb.getString("password"));
+        loginBttn.setText(rb.getString("loginBtn"));
+        exitBttn.setText(rb.getString("exitBtn"));
+        timeZoneLabel.setText(rb.getString("timeZone"));
     }
     /***
      * Exit the program when exit button is clicked.
@@ -95,7 +90,7 @@ public class loginScreenController implements Initializable {
         LocalDateTime apptFoundTime = null;
         boolean apptFoundOrNot = false;
         for(appointment appt : allAppts){
-            apptStartTime = appt.getApptStart().toLocalDateTime();
+            apptStartTime = appt.getApptStart();
             apptFoundOrNot = false;
             if((apptStartTime.isBefore(future15minutes) || apptStartTime.isEqual(future15minutes)) && (apptStartTime.isAfter(past15minutes) || apptStartTime.isEqual(past15minutes))){
                 apptFoundOrNot = true;
@@ -103,22 +98,22 @@ public class loginScreenController implements Initializable {
                 apptFoundTime = apptStartTime;
             }
             if(apptFoundOrNot){
-                String upcomingApptMsg = resourceBundle.getString("upcomingApptMsgTime") + apptFoundTime + resourceBundle.getString("upcomingApptMsgID") + apptFoundID;
-                ButtonType ok = new ButtonType(resourceBundle.getString("ok"), ButtonBar.ButtonData.OK_DONE);
-                Alert alert = new Alert(Alert.AlertType.INFORMATION, upcomingApptMsg, ok);
-                alert.setTitle(resourceBundle.getString("upcomingApptTitle"));
-                alert.setHeaderText(resourceBundle.getString("upcomingApptTitle"));
-                alert.showAndWait();
+                    String upcomingApptMsg = rb.getString("upcomingApptMsgTime") + apptFoundTime + rb.getString("upcomingApptMsgID") + apptFoundID;
+                    ButtonType ok = new ButtonType(rb.getString("ok"), ButtonBar.ButtonData.OK_DONE);
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION, upcomingApptMsg, ok);
+                    alert.setTitle(rb.getString("upcomingApptTitle"));
+                    alert.setHeaderText(rb.getString("upcomingApptTitle"));
+                    alert.showAndWait();
                 count++;
             }
         }
         if(count == 0){
-            String noUpcomingApptMsg = resourceBundle.getString("noUpcomingApptMsg");
-            ButtonType ok = new ButtonType(resourceBundle.getString("ok"), ButtonBar.ButtonData.OK_DONE);
-            Alert alert = new Alert(Alert.AlertType.INFORMATION, noUpcomingApptMsg, ok);
-            alert.setTitle(resourceBundle.getString("noUpcomingApptTitle"));
-            alert.setHeaderText(resourceBundle.getString("noUpcomingApptTitle"));
-            alert.showAndWait();
+                String noUpcomingApptMsg = rb.getString("noUpcomingApptMsg");
+                ButtonType ok = new ButtonType(rb.getString("ok"), ButtonBar.ButtonData.OK_DONE);
+                Alert alert = new Alert(Alert.AlertType.INFORMATION, noUpcomingApptMsg, ok);
+                alert.setTitle(rb.getString("noUpcomingApptTitle"));
+                alert.setHeaderText(rb.getString("noUpcomingApptTitle"));
+                alert.showAndWait();
         }
     }
     /***
@@ -140,11 +135,11 @@ public class loginScreenController implements Initializable {
                 stage.setScene(scene);
                 stage.show();
             } else{
-                ButtonType ok = new ButtonType(resourceBundle.getString("ok"), ButtonBar.ButtonData.OK_DONE);
-                Alert alert = new Alert(Alert.AlertType.ERROR, resourceBundle.getString("loginError"), ok);
-                alert.setTitle(resourceBundle.getString("loginErrorTitle"));
-                alert.setHeaderText(resourceBundle.getString("loginErrorTitle"));
-                alert.showAndWait();
+                    ButtonType ok = new ButtonType(rb.getString("ok"), ButtonBar.ButtonData.OK_DONE);
+                    Alert alert = new Alert(Alert.AlertType.ERROR, rb.getString("loginError"), ok);
+                    alert.setTitle(rb.getString("loginErrorTitle"));
+                    alert.setHeaderText(rb.getString("loginErrorTitle"));
+                    alert.showAndWait();
             }
         } catch(Exception error){
             error.printStackTrace();

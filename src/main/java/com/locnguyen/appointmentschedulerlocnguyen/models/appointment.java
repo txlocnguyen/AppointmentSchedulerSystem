@@ -1,6 +1,7 @@
 package com.locnguyen.appointmentschedulerlocnguyen.models;
 
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 /***
  *  Public class appointment
@@ -13,8 +14,8 @@ public class appointment {
     String apptDescription;
     String apptLocation;
     String apptType;
-    Timestamp apptStart;
-    Timestamp apptEnd;
+    LocalDateTime apptStart;
+    LocalDateTime apptEnd;
     int apptCustomerID;
     int apptUserID;
     int apptContactID;
@@ -32,7 +33,7 @@ public class appointment {
      * @param apptUserID
      * @param apptContactID
      */
-    public appointment(int apptID, String apptTitle, String apptDescription, String apptLocation, String apptType, Timestamp apptStart, Timestamp apptEnd, int apptCustomerID, int apptUserID, int apptContactID) {
+    public appointment(int apptID, String apptTitle, String apptDescription, String apptLocation, String apptType, LocalDateTime apptStart, LocalDateTime apptEnd, int apptCustomerID, int apptUserID, int apptContactID) {
         this.apptID = apptID;
         this.apptTitle = apptTitle;
         this.apptDescription = apptDescription;
@@ -118,28 +119,28 @@ public class appointment {
      * Getter for appointment start time
      * @return apptStart
      */
-    public Timestamp getApptStart() {
+    public LocalDateTime getApptStart() {
         return apptStart;
     }
     /***
      * Setter for appointment start time
      * @param apptStart
      */
-    public void setApptStart(Timestamp apptStart) {
+    public void setApptStart(LocalDateTime apptStart) {
         this.apptStart = apptStart;
     }
     /***
      * Getter for appointment end time
      * @return apptEnd
      */
-    public Timestamp getApptEnd() {
+    public LocalDateTime getApptEnd() {
         return apptEnd;
     }
     /***
      * Setter for appointment end time
      * @param apptEnd
      */
-    public void setApptEnd(Timestamp apptEnd) {
+    public void setApptEnd(LocalDateTime apptEnd) {
         this.apptEnd = apptEnd;
     }
     /***

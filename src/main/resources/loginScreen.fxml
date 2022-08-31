@@ -7,22 +7,22 @@
 <AnchorPane prefHeight="465.0" prefWidth="746.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.locnguyen.appointmentschedulerlocnguyen.controller.loginScreenController">
    <children>
       <TextField fx:id="userNameTxtField" layoutX="278.0" layoutY="119.0" prefHeight="36.0" prefWidth="203.0" />
-      <Label fx:id="labelForUsername" alignment="CENTER" contentDisplay="CENTER" layoutX="32.0" layoutY="112.0" prefHeight="53.0" prefWidth="224.0" text="USERNAME ">
+      <Label fx:id="labelForUsername" alignment="CENTER" contentDisplay="CENTER" layoutX="1.0" layoutY="112.0" prefHeight="53.0" prefWidth="276.0" text="USERNAME ">
          <font>
-            <Font size="27.0" />
+            <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="labelForPassword" alignment="CENTER" contentDisplay="CENTER" layoutX="32.0" layoutY="225.0" prefHeight="53.0" prefWidth="224.0" text="PASSWORD">
+      <Label fx:id="labelForPassword" alignment="CENTER" contentDisplay="CENTER" layoutX="1.0" layoutY="225.0" prefHeight="53.0" prefWidth="276.0" text="PASSWORD">
          <font>
-            <Font size="27.0" />
+            <Font size="18.0" />
          </font>
       </Label>
-      <Button fx:id="loginBttn" layoutX="544.0" layoutY="112.0" mnemonicParsing="false" onAction="#loginToSystem" text="LOGIN">
+      <Button fx:id="loginBttn" layoutX="544.0" layoutY="112.0" mnemonicParsing="false" onAction="#loginToSystem" prefHeight="50.0" prefWidth="135.0" text="LOGIN">
          <font>
             <Font size="23.0" />
          </font>
       </Button>
-      <Button fx:id="exitBttn" layoutX="544.0" layoutY="226.0" mnemonicParsing="false" onAction="#exitProgram" prefHeight="50.0" prefWidth="98.0" text="EXIT">
+      <Button fx:id="exitBttn" layoutX="544.0" layoutY="226.0" mnemonicParsing="false" onAction="#exitProgram" prefHeight="50.0" prefWidth="135.0" text="EXIT">
          <font>
             <Font size="23.0" />
          </font>
@@ -32,7 +32,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="timeZoneData" layoutX="204.0" layoutY="385.0" prefHeight="36.0" prefWidth="149.0" text="Time Zone">
+      <Label fx:id="timeZoneData" layoutX="204.0" layoutY="385.0" prefHeight="36.0" prefWidth="242.0" text="Time Zone">
          <font>
             <Font size="18.0" />
          </font>

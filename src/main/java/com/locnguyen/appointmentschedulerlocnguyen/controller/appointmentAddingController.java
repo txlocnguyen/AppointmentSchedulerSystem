@@ -77,7 +77,6 @@ public class appointmentAddingController implements Initializable {
 
     @FXML
     private Label endTimeLabel;
-
     @FXML
     private TextField locationTxtField;
 
@@ -215,6 +214,8 @@ public class appointmentAddingController implements Initializable {
                 Timestamp apptEndConverted = Timestamp.valueOf(apptEndLocal.atZone(ZoneId.systemDefault()).withZoneSameInstant(ZoneId.of("UTC")).toLocalDateTime());
                 Timestamp apptStartTime = Timestamp.valueOf(apptDate + " " + apptStartTimeHourComboBox.getSelectionModel().getSelectedItem() + ":" + apptStartTimeMinuteComboBox.getSelectionModel().getSelectedItem() + ":00");
                 Timestamp apptEndTime = Timestamp.valueOf(apptDate + " " + apptEndTimeHourComboBox.getSelectionModel().getSelectedItem() + ":" + apptEndTimeMinuteComboBox.getSelectionModel().getSelectedItem() + ":00");
+                Timestamp startSQL = Timestamp.valueOf(LocalDateTime.of(apptDate, LocalTime.parse(apptStartTimeHourComboBox.getSelectionModel().getSelectedItem() + ":" + apptStartTimeMinuteComboBox.getSelectionModel().getSelectedItem())).atZone(ZoneId.of("UTC")).withZoneSameInstant(ZoneId.of("UTC")).toLocalDateTime());
+                Timestamp endSQL = Timestamp.valueOf(LocalDateTime.of(apptDate, LocalTime.parse(apptEndTimeHourComboBox.getSelectionModel().getSelectedItem() + ":" + apptEndTimeMinuteComboBox.getSelectionModel().getSelectedItem())).atZone(ZoneId.of("UTC")).withZoneSameInstant(ZoneId.of("UTC")).toLocalDateTime());
                 if(apptStartTime.after(apptEndTime)){
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Error Adding Appointment");
@@ -237,7 +238,7 @@ public class appointmentAddingController implements Initializable {
                     alert.showAndWait();
                 }
                 else{
-                    appointmentsDAO.insertNewAppointment(apptID, apptTitle, apptDescription, apptLocation, apptType, apptStartConverted, apptEndConverted, custID, userID, contactID, apptCreatedBy, apptCreatedBy);
+                    appointmentsDAO.insertNewAppointment(apptID, apptTitle, apptDescription, apptLocation, apptType, startSQL, endSQL, custID, userID, contactID, apptCreatedBy, apptCreatedBy);
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("Appointment Added Successfully");
                     alert.setHeaderText("Appointment Added Successfully");
